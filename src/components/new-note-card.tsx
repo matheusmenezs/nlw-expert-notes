@@ -1,28 +1,13 @@
 import * as Dialog from '@radix-ui/react-dialog'
-import { formatDistanceToNow } from 'date-fns'
-import { ptBR } from 'date-fns/locale'
 import { X } from 'lucide-react'
 
-interface NoteCardProps {
-    note: {
-        date: Date
-        content: string
-    }
-}
-
-export function NoteCard({ note }: NoteCardProps) {
+export function NewNoteCard() {
     return (
         <Dialog.Root>
-            <Dialog.Trigger className="rounded-md text-left flex-col bg-slate-800 p-5 gap-3 overflow-hidden outline-none relative hover:ring-2 hover:ring-slate-600 focus-visible:ring-2 focus-visible:ring-lime         -400">
-                <span className="text-sm font-medium text-slate-200">
-                    {note.date.toISOString()}
-                </span>
-                <p className="text-sm leading-6 text-slate-400">
-                    {note.content}
-                </p>
-
-                <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/60 to-black/0 pointer-events-none" />
-            </Dialog.Trigger >
+            <Dialog.Trigger className="rounded-md flex flex-col text-left bg-slate-700 p-5 gap-3">
+                <span className="text-sm font-medium text-slate-200">Adicionar nota</span>
+                <p className="text-sm leading-6 text-slate-400">Grave uma nota em áudio que será convertida para texto automaticamente.</p>
+            </Dialog.Trigger>
 
             <Dialog.Portal>
                 <Dialog.Overlay className="inset-0 fixed bg-black/60"></Dialog.Overlay>
@@ -32,11 +17,11 @@ export function NoteCard({ note }: NoteCardProps) {
                     </Dialog.Close>
                     <div className="flex flex-1 flex-col gap-3 p-5">
                         <span className="text-sm font-medium text-slate-200">
-                            {formatDistanceToNow(note.date, { locale: ptBR, addSuffix: true })}
+
                         </span>
 
                         <p className="text-sm leading-6 text-slate-400">
-                            {note.content}
+
                         </p>
                     </div>
 
@@ -52,8 +37,3 @@ export function NoteCard({ note }: NoteCardProps) {
 
     )
 }
-
-//Anotações de funcionalidades:
-//group: Propriedade útil para quando se deseja alterar uma propriedade com base no elemento pai.
-//overflow-hidden: Qualquer elemento interno que ocupe um espaço além do dialog seja escondido.
-//Dialog.Overlay Util para criar-se o efeito de esmaecer demais itens ao abrir o Dialog.

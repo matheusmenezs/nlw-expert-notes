@@ -12,7 +12,7 @@ let speechRecognition: SpeechRecognition | null = null
 
 export function NewNoteCard({ onNoteCreated }: NewNoteCardProps) {
     const [shouldShowOnBoarding, setShouldShowOnBoarding] = useState(true)
-    const [isRecording, setIsRecording] = useState(true)
+    const [isRecording, setIsRecording] = useState(false)
     const [content, setContent] = useState('')
 
     function hanldeStartEditor() {
